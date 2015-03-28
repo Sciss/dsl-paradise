@@ -3,7 +3,7 @@ import Keys._
 
 object build extends Build {
   lazy val sharedSettings = Defaults.defaultSettings ++ Seq(
-    scalaVersion := "2.11.0-SNAPSHOT",
+    scalaVersion := "2.11.6",
     crossVersion := CrossVersion.full,
     version := "0.0.1-SNAPSHOT",
     organization := "org.dslparadise",
@@ -12,7 +12,7 @@ object build extends Build {
       Resolver.sonatypeRepo("releases")
     ),
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-    scalacOptions ++= Seq("-deprecation", "-feature"),
+    scalacOptions ++= Seq("-deprecation", "-feature", "-Xfuture", "-encoding", "utf8"),
     parallelExecution in Test := false, // hello, reflection sync!!
     logBuffered := false
   )
@@ -50,6 +50,8 @@ object build extends Build {
     base = file("sandbox")
   ) settings (
     sharedSettings ++ usePluginSettings: _*
+  ) settings (
+    initialCommands in console := "import org.dslparadise.annotations._"
   ) dependsOn plugin
 
   lazy val tests = Project(

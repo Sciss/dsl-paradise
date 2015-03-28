@@ -3,6 +3,8 @@
 This is a Scala extension proposal, first introduced by [@lihaoyi](https://github.com/lihaoyi), with tiny syntax tweaks by [@stanch](https://github.com/stanch).
 See [corresponding discussion](https://groups.google.com/forum/#!topic/scala-debate/f4CLmYShX6Q) on *scala-debate*.
 
+Below examples can be tested in the REPL using `sbt sandbox/console`
+
 ## Implicit Injection: boilerplate-free implicit context propagation
 
 ```scala
